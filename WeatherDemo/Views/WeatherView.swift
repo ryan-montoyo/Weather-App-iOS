@@ -33,7 +33,7 @@ struct WeatherView: View {
                         
                         Spacer()
                         
-                        Text(weather.main.feelsLike.roundDouble() + "°")
+                        Text(weather.main.feelsLike.toFahrenheit().roundDouble() + "°")
                             .font(.system(size: 100))
                             .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                             .padding()
@@ -67,9 +67,9 @@ struct WeatherView: View {
                         .padding(.bottom)
                     
                     HStack{
-                        WeatherRow(logo: "thermometer", name: "Min Temp", value: (weather.main.tempMin.roundDouble() + "°"))
+                        WeatherRow(logo: "thermometer", name: "Min Temp", value: (weather.main.tempMin.toFahrenheit().roundDouble() + "°"))
                         Spacer()
-                        WeatherRow(logo: "thermometer", name: "Max Temp", value: (weather.main.tempMax.roundDouble() + "°"))
+                        WeatherRow(logo: "thermometer", name: "Max Temp", value: (weather.main.tempMax.toFahrenheit().roundDouble() + "°"))
                     }
                     HStack{
                         WeatherRow(logo: "wind", name: "Wind Speed", value: (weather.wind.speed.roundDouble() + "m/s"))
@@ -77,7 +77,7 @@ struct WeatherView: View {
                         WeatherRow(logo: "humidity", name: "Humidity", value: (weather.main.humidity.roundDouble() + "%"))
                     }
                 }
-                .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
+                .frame(maxWidth: .infinity, alignment: .leading)
                 .padding()
                 .padding(.bottom, 20)
                 .foregroundColor(Color(hue:0.656, saturation: 0.787, brightness: 0.354))
